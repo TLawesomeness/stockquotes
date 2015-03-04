@@ -5,6 +5,15 @@ html(lang='en')
     title Get Stock Quotes
     link(rel='stylesheet', href='/style.css')
   body
-    h1 Hello, World
+    .section
+      h3 Get Company Quotes
+      .row
+        input#text(type='text', required='', placeholder='enter a company')
+        
+        button#getquotes(type='button') Get Quotes
+    
+    .container
+      .showData
+        
     script(src='/vendor/jquery/dist/jquery.js')
     script(src='/main.js')
