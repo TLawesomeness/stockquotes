@@ -26,11 +26,11 @@ function getData() {
       if (data.Change > 0) {
         display = $div.html('Name: ' + data.Name + '<br />' + 'Symbol: ' + data.Symbol + '<br />' + 'Quote: ' + data.LastPrice + '<br />' + 'Change: ' + data.Change + '<img src="http://www.novayariga-personal.ru/public/cms/img/icons/uparrow-green.png">');
         console.log('positive!');
-      } else if (data.Change === 0 || 'undefined') {
-        display = $div.html('Name: ' + data.Name + '<br />' + 'Symbol: ' + data.Symbol + '<br />' + 'Quote: ' + data.LastPrice + '<br />' + 'Change: ' + data.Change);
-      } else {
+      } else if (data.Change < 0) {
         display = $div.html('Name: ' + data.Name + '<br />' + 'Symbol: ' + data.Symbol + '<br />' + 'Quote: ' + data.LastPrice + '<br />' + 'Change: ' + data.Change + '<img src="http://www.cwealthadvisors.com.my/images%5Carrow_red_down.png">');
         console.log('negative!');
+      } else {
+        display = $div.html('Name: ' + data.Name + '<br />' + 'Symbol: ' + data.Symbol + '<br />' + 'Quote: ' + data.LastPrice + '<br />' + 'Change: ' + data.Change);
       }
 
       display.append($del);
