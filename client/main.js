@@ -6,33 +6,33 @@ $(document).ready(function() {
 });
 
 function getData() {
-  var inputs = $('#text').val();
-  var symbol = inputs;
+  var symbol = $('#text').val();
+
   var url = 'http://dev.markitondemand.com/Api/v2/Quote/jsonp?symbol=' + symbol + '&callback=?';
   console.log(url);
 
-  if (inputs === '' || isNaN(inputs) === false) {
+  if (!symbol || !isNaN(symbol)) {
     alert('Enter a valid input');
   } else {
     $.getJSON(url, function(data) {
       console.log('data:', data);
 
-    var array = [];
-    var $del = $('<input type="button" value = "Delete" />');
-    var $div = $('<div>');
-    $div.addClass('dataDesign');
-    var display = $div.html('Name: ' + data.Name + '<br />' + 'Symbol: ' + data.Symbol + '<br />' + 'Quote: ' + data.LastPrice +'<br />' + 'Change: ' + data.Change);
-    array.push(display);
-    display.append($del);
-    $('.showData').append(display);
+      var $del = $('<input type="button" value = "Delete" />');
 
-    $del.click(function() {
-      $(this).remove();
-    })
+      var $div = $('<div>');
+      $div.addClass('dataDesign');
+      var display = $div.html('Name: ' + data.Name + '<br />' + 'Symbol: ' + data.Symbol + '<br />' + 'Quote: ' + data.LastPrice + '<br />' + 'Change: ' + data.Change);
 
-  });
+      display.append($del);
+      $('.showData').append(display);
+
+      $del.click(function() {
+        $div.remove();
+      });
+
+    });
   }
-};
+}
 
 // function deleteData() {
 //   $('.dataDesign').remove();
