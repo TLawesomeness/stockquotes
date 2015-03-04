@@ -2,7 +2,6 @@
 
 $(document).ready(function() {
   $('#getquotes').click(getData);
-  // $('#delete').click(deleteData);
 });
 
 function getData() {
@@ -24,16 +23,13 @@ function getData() {
       $div.addClass('dataDesign');
       var display = $div.html('Name: ' + data.Name + '<br />' + 'Symbol: ' + data.Symbol + '<br />' + 'Quote: ' + data.LastPrice + '<br />' + 'Change: ' + data.Change);
 
-      var upArrow = new Image();
-      upArrow.src = 'http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons-256/rounded-glossy-black-icons-arrows/009346-rounded-glossy-black-icon-arrows-arrow-up.png';
-      var downArrow = new Image();
-      downArrow.src= 'http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/glossy-black-icons-arrows/007998-glossy-black-icon-arrows-arrow4-down.png';
-
       if (data.Change > 0) {
-        // display = $div.html('Name: ' + data.Name + '<br />' + 'Symbol: ' + data.Symbol + '<br />' + 'Quote: ' + data.LastPrice + '<br />' + 'Change: ' + data.Change + upArrow);
+        display = $div.html('Name: ' + data.Name + '<br />' + 'Symbol: ' + data.Symbol + '<br />' + 'Quote: ' + data.LastPrice + '<br />' + 'Change: ' + data.Change + '<img src="http://www.novayariga-personal.ru/public/cms/img/icons/uparrow-green.png">');
         console.log('positive!');
+      } else if (data.Change === 0 || 'undefined') {
+        display = $div.html('Name: ' + data.Name + '<br />' + 'Symbol: ' + data.Symbol + '<br />' + 'Quote: ' + data.LastPrice + '<br />' + 'Change: ' + data.Change);
       } else {
-        // display = $div.html('Name: ' + data.Name + '<br />' + 'Symbol: ' + data.Symbol + '<br />' + 'Quote: ' + data.LastPrice + '<br />' + 'Change: ' + data.Change + downArrow);
+        display = $div.html('Name: ' + data.Name + '<br />' + 'Symbol: ' + data.Symbol + '<br />' + 'Quote: ' + data.LastPrice + '<br />' + 'Change: ' + data.Change + '<img src="http://www.cwealthadvisors.com.my/images%5Carrow_red_down.png">');
         console.log('negative!');
       }
 
@@ -47,7 +43,3 @@ function getData() {
     });
   }
 }
-
-// function deleteData() {
-//   $('.dataDesign').remove();
-// }
